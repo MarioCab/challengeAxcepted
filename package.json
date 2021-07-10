@@ -2,7 +2,7 @@
   "name": "challengeaxcepted",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
@@ -16,6 +16,9 @@
   },
   "author": "Cabrera, Kerekes, Lawton, McDermott and Pawlak",
   "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^5.1.0"
+  },
   "bugs": {
     "url": "https://github.com/fmcdermott4/challengeAxcepted/issues"
   },
