@@ -1,21 +1,8 @@
 const { MongoClient } = require('mongodb');
-const fs = require('fs');
-const credentials = fs.readFileSync('<path_to_certificate>');
-const client = new MongoClient('mongodb+srv://cluster0.rnlik.mongodb.net/myFirstDatabase?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority', {
-  sslKey: credentials,
-  sslCert: credentials
+const uri = ""
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
 });
-async function run() {
-  try {
-    await client.connect();
-    const database = client.db("testDB");
-    const collection = database.collection("testCol");
-    const docCount = await collection.countDocuments({});
-    console.log(docCount);
-    // perform actions using client
-  } finally {
-    // Ensures that the client will close when you finish/error
-    await client.close();
-  }
-}
-run().catch(console.dir);
