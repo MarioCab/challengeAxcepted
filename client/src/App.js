@@ -1,5 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
+import Home from './pages/Home';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -15,7 +20,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Time to edit this, Team
         </a>
       </header>
     </div>
