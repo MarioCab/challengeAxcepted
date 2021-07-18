@@ -9,5 +9,17 @@ const resolvers = {
       return await User.find({}).populate("posts");
     },
   },
+
+  Mutation: {
+    addUser: async (parent, { username, password, email }) => {
+      return User.create({ username, password, email });
+    },
+    addPost: async (
+      parent,
+      { title, body, challenge, dateCreated, location }
+    ) => {
+      return Post.create({ title, body, challenge, dateCreated, location });
+    },
+  },
 };
 module.exports = resolvers;
