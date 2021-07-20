@@ -11,7 +11,11 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 import Home from './pages/Home';
+
+
 import Login from'./pages/Login';
+import LoginLink from './components/LoginLink'
+
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Mychallenges from './pages/Mychallenges';
@@ -43,6 +47,7 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
       <Header />
+      <LoginLink />
       <Route exact path="/">
               <Home />
       </Route>

@@ -4,14 +4,14 @@ import {Nav, Modal, Tab } from 'react-bootstrap';
 import SignUpForm from '../components/SignupForm';
 import LoginForm from '../components/LoginForm';
 
-const Login = () => {
+const LoginLink = () => {
     const [showModal, setShowModal] = 
     // true; 
     useState(false);
 
 return(
     <div>
-    <h1>LOGIN</h1>
+    {/* <h1>LOGIN</h1> */}
     <Link onClick={() => setShowModal(true)}>Login/Sign Up</Link>
     <Modal
         size='lg'
@@ -55,4 +55,4 @@ return(
 // )
 };
 
-export default Login;
+export default LoginLink;
