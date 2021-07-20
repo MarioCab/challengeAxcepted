@@ -6,7 +6,7 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 
@@ -46,18 +46,20 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-      <Header />
-      <LoginLink />
-      <Route exact path="/">
-              <Home />
-      </Route>
-      <Route exact path="/login">
-      <Login />
-      </Route>
-      <Route exact path="/mychallenges">
-      <Mychallenges />
-      </Route>
-      <Footer />
+        <Header />
+        <LoginLink />
+        <Switch>
+          <Route exact path="/login">
+            <Login />
+          </Route>
+          <Route exact path="/mychallenges">
+            <Mychallenges />
+          </Route>
+          <Route path="*">
+            <Home />
+          </Route>
+        </Switch>
+        <Footer />
       </Router>
     </ApolloProvider>
   );
