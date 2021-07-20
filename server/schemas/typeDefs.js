@@ -33,6 +33,7 @@ const typeDefs = gql`
       dateCreated: String
       location: String
     ): Post
+    deletePost(_id: ID!): Post
   }
 `;
 

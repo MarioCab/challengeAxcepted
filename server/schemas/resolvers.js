@@ -20,6 +20,9 @@ const resolvers = {
     ) => {
       return Post.create({ title, body, challenge, dateCreated, location });
     },
+    deletePost: async (parent, { _id }) => {
+      return Post.findOneAndDelete({ _id });
+    },
   },
 };
 module.exports = resolvers;
