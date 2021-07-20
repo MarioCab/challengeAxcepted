@@ -34,6 +34,7 @@ const typeDefs = gql`
       location: String
     ): Post
     deletePost(_id: ID!): Post
+    updatePost(_id: ID!): Post
   }
 `;
 
