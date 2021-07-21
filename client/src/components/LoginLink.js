@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Nav, Modal, Tab } from "react-bootstrap";
+import { Nav, Modal, Tab, Button } from "react-bootstrap";
 import SignUpForm from "../components/SignupForm";
 import LoginForm from "../components/LoginForm";
 
@@ -12,7 +12,9 @@ const LoginLink = () => {
   return (
     <div>
       {/* <h1>LOGIN</h1> */}
-      <Link onClick={() => setShowModal(true)}>Login/Sign Up</Link>
+      <Button variant="primary" onClick={() => setShowModal(true)}>
+        Login/Sign Up
+      </Button>
       <Modal
         size="lg"
         show={showModal}

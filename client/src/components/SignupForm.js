@@ -29,6 +29,7 @@ const SignupForm = () => {
       const { data } = addUser({
         variables: { ...userFormData },
       });
+      console.dir(data);
 
       window.location.reload();
     } catch (err) {
