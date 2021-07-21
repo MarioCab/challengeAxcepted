@@ -14,7 +14,6 @@ const postSchema = new Schema({
   challenge: {
     type: String,
     // enum: ["Foot Race", "Drink off", "Axe Throwing"],
-    required: true,
   },
   dateCreated: {
     type: Date,

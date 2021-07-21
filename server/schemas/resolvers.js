@@ -23,8 +23,25 @@ const resolvers = {
     deletePost: async (parent, { _id }) => {
       return Post.findOneAndDelete({ _id });
     },
-    updatePost: async (parent, { _id }) => {
-      return Post.updateOne({ title, body, challenge, dateCreated, location });
+    updatePost: async (
+      parent,
+      { postId, title, body, challenge, dateCreated, location }
+    ) => {
+      return Post.findOneAndUpdate(
+        {
+          _id: postId,
+        },
+        {
+          title: title,
+          body: body,
+          challenge: challenge,
+          dateCreated: dateCreated,
+          location: location,
+        },
+        {
+          new: true,
+        }
+      );
     },
   },
 };

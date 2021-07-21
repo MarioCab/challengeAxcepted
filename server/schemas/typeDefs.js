@@ -33,8 +33,17 @@ const typeDefs = gql`
       dateCreated: String
       location: String
     ): Post
+
     deletePost(_id: ID!): Post
-    updatePost(_id: ID!): Post
+
+    updatePost(
+      postId: ID!
+      title: String!
+      body: String
+      challenge: String
+      dateCreated: String
+      location: String
+    ): Post
   }
 `;
 
