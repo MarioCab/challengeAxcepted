@@ -47,6 +47,21 @@ const client = new ApolloClient({
 //   cache: new InMemoryCache(),
 // });
 
+// class App extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       title: 'Challenge Axcepted',
+//       headerLinks: [
+//         { title: 'Home', path: '/'},
+//         { title: 'Login', path: '/login'},
+//         { title: 'My Challenges', path: '/mychallenges'}
+//       ]
+//     }
+//   }
+// }
+
+
 function App() {
   return (
     <ApolloProvider client={client}>
