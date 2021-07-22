@@ -7,10 +7,13 @@ import {
 } from "@apollo/client";
 
 import { setContext } from "@apollo/client/link/context";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Home from "./pages/Home";
+import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
 
 import Login from "./pages/Login";
 import LoginLink from "./components/LoginLink";
@@ -48,6 +51,19 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
+        <Container className="p-0" fluid={true}>
+          <Navbar className="border-bottom" bg="transparent" expand="lg">
+            <Navbar.Brand>Challenge Axcepted</Navbar.Brand>
+            <Navbar.Toggle className="border-0" aria-controls="navbar-toggle"/>
+            <Navbar.Collapse id="navbar-toggle">
+              <Nav className="ml-auto">
+                <Link className="nav-link" to="/">Home</Link>
+                <Link className="nav-link" to="/login">Login</Link>
+                <Link className="nav-link" to="/mychallenges">My Challenges</Link>
+              </Nav>
+              </Navbar.Collapse>
+            </Navbar>
+
         <Header />
         <LoginLink />
         <Switch>
@@ -61,6 +77,7 @@ function App() {
             <Home />
           </Route>
         </Switch>
+        </Container>
       </Router>
     </ApolloProvider>
   );
