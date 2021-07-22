@@ -27,5 +27,15 @@ const ADD_POST = gql`
     }
   }
 `;
+const LOGIN_USER = gql`
+mutation loginUser(
+  $email: String,
+  $password: String
+){
+  loginUser(
+    email: $email,
+    password: $password
+  )
+}`
 
-export { ADD_USER, ADD_POST };
+export { ADD_USER, ADD_POST, LOGIN_USER };

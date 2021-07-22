@@ -20,6 +20,8 @@ const resolvers = {
     ) => {
       return Post.create({ title, body, challenge, dateCreated, location });
     },
+    loginUser: async(parent, { email, password }) => { return Post.findOne({email, password})}
+    ,
     deletePost: async (parent, { _id }) => {
       return Post.findOneAndDelete({ _id });
     },
