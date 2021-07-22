@@ -34,6 +34,8 @@ const typeDefs = gql`
       location: String
     ): Post
 
+    loginUser(email: String!, password: String!): User
+
     deletePost(_id: ID!): Post
 
     updatePost(
