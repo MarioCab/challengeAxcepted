@@ -18,6 +18,8 @@ import Nav from "react-bootstrap/Nav";
 import Login from "./pages/Login";
 import LoginLink from "./components/LoginLink";
 
+import Auth from "./utils/auth"
+
 import Header from "./components/Header";
 import Mychallenges from "./pages/Mychallenges";
 import ChallengeWorld from "./components/ChallengeWorld";
@@ -91,6 +93,11 @@ const client = new ApolloClient({
 //   }
 // }
 
+const logout = (event) => {
+  event.preventDefault();
+  Auth.logout();
+}
+
 function App() {
   return (
     <ApolloProvider client={client}>
@@ -113,9 +120,11 @@ function App() {
                   My Challenges
                 </Link>
                 <LoginLink />
+                {/* <Header /> */}
               </Nav>
             </Navbar.Collapse>
           </Navbar>
+          {/* <Header /> */}
           <Switch>
             <Route exact path="/login">
               <Login />

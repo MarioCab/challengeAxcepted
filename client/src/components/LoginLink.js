@@ -1,16 +1,35 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Nav, Modal, Tab, Button } from "react-bootstrap";
+import Auth from "../utils/auth"
+
 import SignUpForm from "../components/SignupForm";
 import LoginForm from "../components/LoginForm";
 
 const LoginLink = () => {
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  };
+
   const [showModal, setShowModal] =
     // true;
     useState(false);
 
   return (
     <div>
+    {Auth.loggedIn() ? (
+      <>
+        <span class="text-success">{Auth.getProfile().data.username} LOGGED IN</span>
+        <Button 
+        variant="danger"
+        // className="btn btn-small btn-primary m-2" 
+        onClick={logout}>
+          Logout
+        </Button>
+      </>
+    ) : (
+      <>
       {/* <h1>LOGIN</h1> */}
       <Button variant="primary" onClick={() => setShowModal(true)}>
         Login/Sign Up
@@ -47,7 +66,19 @@ const LoginLink = () => {
           </Modal.Body>
         </Tab.Container>
       </Modal>
-    </div>
+    </>
+
+      // <>
+      //   <Link className="btn btn-lg btn-info m-2" to="/login">
+      //     Login
+      //   </Link>
+      //   <Link className="btn btn-lg btn-light m-2" to="/signup">
+      //     Signup
+      //   </Link>
+      // </>
+    )}
+  </div>
+
   );
 
   // return(
