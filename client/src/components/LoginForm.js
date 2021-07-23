@@ -1,6 +1,7 @@
 // see SignupForm.js for comments
 import React, { useState } from "react";
-import { useMutation, useQuery } from "@apollo/client";
+import { Link } from "react-router-dom";
+import { useMutation } from "@apollo/client";
 
 import { Form, Button, Alert } from "react-bootstrap";
 // import {QUERY_USERS} from "../utils/queries"
@@ -8,18 +9,27 @@ import { LOGIN_USER } from "../utils/mutations";
 
 // import { loginUser } from "../utils/API";
 // '..//API';
-// import Auth from '../utils/auth';
+import Auth from "../utils/auth";
 
-const LoginForm = () => {
+const LoginForm = (props) => {
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
   // const [validated] = useState(false);
   // const [showAlert, setShowAlert] = useState(false);
 
-  const [loginUser, { error}] = useMutation(LOGIN_USER);
+  const [loginUser, { error, data }] = useMutation(LOGIN_USER);
 
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setUserFormData({
+      ...userFormData,
+      [name]: value,
+    });
+  };
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    console.log(userFormData);
 
     // check if form has everything (as per react-bootstrap docs)
     // const form = event.currentTarget;
@@ -29,14 +39,22 @@ const LoginForm = () => {
     // }
 
     try {
-      const {data} =loginUser({
-        variables: { ...userFormData}
-      })
-      console.dir(data)
+      const { data } = await loginUser({
+        variables: { ...userFormData },
+      });
+      console.log(userFormData);
+      console.log(data);
+      Auth.login(data.login.token);
+
       // window.location.reload()
     } catch (err) {
-      console.dir(err)
+      console.error(err);
     }
+
+    setUserFormData({
+      email: "",
+      password: "",
+    });
 
     // try {
     //   const response = await loginUser(userFormData);
@@ -60,23 +78,22 @@ const LoginForm = () => {
     // });
   };
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    // setUserFormData({ ...userFormData, [name]: value });
-    if (name == "email") {
-    setUserFormData({ ...userFormData, [name]: value });
-  } else if (name == "password") {
-    setUserFormData({ ...userFormData, [name]: value });
-  }
-
-  };
-
+  // const handleInputChange = (event) => {
+  //   const { name, value } = event.target;
+  //   // setUserFormData({ ...userFormData, [name]: value });
+  //   if (name == "email") {
+  //     setUserFormData({ ...userFormData, [name]: value });
+  //   } else if (name == "password") {
+  //     setUserFormData({ ...userFormData, [name]: value });
+  //   }
+  // };
 
   return (
     <>
-      <Form 
-      // noValidate validated={validated} 
-      onSubmit={handleFormSubmit}>
+      <Form
+        // noValidate validated={validated}
+        onSubmit={handleFormSubmit}
+      >
         {/* <Alert
           dismissible
           onClose={() => setShowAlert(false)}
@@ -91,9 +108,8 @@ const LoginForm = () => {
             type="text"
             placeholder="Your email"
             name="email"
-            onChange={handleInputChange}
+            onChange={handleChange}
             value={userFormData.email}
-            required
           />
           <Form.Control.Feedback type="invalid">
             Email is required!
@@ -106,9 +122,8 @@ const LoginForm = () => {
             type="password"
             placeholder="Your password"
             name="password"
-            onChange={handleInputChange}
+            onChange={handleChange}
             value={userFormData.password}
-            required
           />
           <Form.Control.Feedback type="invalid">
             Password is required!

@@ -1,4 +1,6 @@
 const { Post, User } = require("../models");
+const { AuthenticationError } = require("apollo-server-express");
+const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
@@ -20,8 +22,23 @@ const resolvers = {
     ) => {
       return Post.create({ title, body, challenge, dateCreated, location });
     },
-    loginUser: async(parent, { email, password }) => { return Post.findOne({email, password})}
-    ,
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
+
+      if (!user) {
+        throw new AuthenticationError("No User Found");
+      }
+
+      const correctPw = await user.isCorrectPassword(password);
+
+      if (!correctPw) {
+        throw new AuthenticationError("Password is incorrect");
+      }
+
+      const token = signToken(user);
+
+      return { token, user };
+    },
     deletePost: async (parent, { _id }) => {
       return Post.findOneAndDelete({ _id });
     },
