@@ -28,14 +28,11 @@ const ADD_POST = gql`
   }
 `;
 const LOGIN_USER = gql`
-mutation loginUser(
-  $email: String,
-  $password: String
-){
-  loginUser(
-    email: $email,
-    password: $password
-  )
-}`
+  mutation login($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
+      token
+    }
+  }
+`;
 
 export { ADD_USER, ADD_POST, LOGIN_USER };
