@@ -20,6 +20,7 @@ import LoginLink from "./components/LoginLink";
 
 import Header from "./components/Header";
 import Mychallenges from "./pages/Mychallenges";
+import ChallengeWorld from "./components/ChallengeWorld";
 
 const client = new ApolloClient({
   uri: "/graphql",
@@ -75,6 +76,7 @@ function App() {
                 <Link className="nav-link" to="/">Home</Link>
                 {/* <LoginLink /> */}
                 {/* <Link className="nav-link" to="/login">Login</Link> */}
+                <Link className="nav-link" to="/challengeworld">Challenge World</Link>
                 <Link className="nav-link" to="/mychallenges">My Challenges</Link>
                 <LoginLink />
               </Nav>
@@ -90,9 +92,13 @@ function App() {
           <Route exact path="/mychallenges">
             <Mychallenges />
           </Route>
+          <Route exact path="/challengeworld">
+            <ChallengeWorld />
+          </Route>
           <Route path="/">
             <Home />
           </Route>
+          
         </Switch>
         </Container>
       </Router>
