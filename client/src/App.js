@@ -21,6 +21,8 @@ import LoginLink from "./components/LoginLink";
 import Header from "./components/Header";
 import Mychallenges from "./pages/Mychallenges";
 
+
+
 const client = new ApolloClient({
   uri: "/graphql",
   cache: new InMemoryCache(),
