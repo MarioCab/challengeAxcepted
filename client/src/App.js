@@ -22,20 +22,43 @@ import Header from "./components/Header";
 import Mychallenges from "./pages/Mychallenges";
 import ChallengeWorld from "./components/ChallengeWorld";
 
-<<<<<<< HEAD
-
-
-const client = new ApolloClient({
-=======
 // const client = new ApolloClient({
-//   uri: "/graphql",
+// =======
+// // const client = new ApolloClient({
+// //   uri: "/graphql",
+// //   cache: new InMemoryCache(),
+// // });
+// =======
+// // const client = new ApolloClient({
+// //   uri: "/graphql",
+// //   cache: new InMemoryCache(),
+// // });
+
+const httpLink = createHttpLink({
+  uri: "/graphql",
+});
+
+// const authLink = setContext((_, { headers }) => {
+//   // get the authentication token from local storage if it exists
+//   const token = localStorage.getItem("id_token");
+//   // return the headers to the context so httpLink can read them
+//   return {
+//     headers: {
+//       ...headers,
+//       authorization: token ? `Bearer ${token}` : "",
+//     },
+//   };
+// });
+
+// const client = new ApolloClient({
+//   link: authLink.concat(httpLink),
 //   cache: new InMemoryCache(),
 // });
 
-const httpLink = createHttpLink({
->>>>>>> c7cfebc99f0ccb93a17a8e5c047ffad3e28d9243
-  uri: "/graphql",
-});
+// const httpLink = createHttpLink({
+// >>>>>>> c7cfebc99f0ccb93a17a8e5c047ffad3e28d9243
+//   uri: "/graphql",
+// });
 
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
@@ -83,30 +106,30 @@ function App() {
                 </Link>
                 {/* <LoginLink /> */}
                 {/* <Link className="nav-link" to="/login">Login</Link> */}
-                <Link className="nav-link" to="/challengeworld">Challenge World</Link>
-                <Link className="nav-link" to="/mychallenges">My Challenges</Link>
-                                <LoginLink />
+                <Link className="nav-link" to="/challengeworld">
+                  Challenge World
+                </Link>
+                <Link className="nav-link" to="/mychallenges">
+                  My Challenges
+                </Link>
+                <LoginLink />
               </Nav>
             </Navbar.Collapse>
           </Navbar>
-
-        <Header />
-        <LoginLink />
-        <Switch>
-          <Route exact path="/login">
-            <Login />
-          </Route>
-          <Route exact path="/mychallenges">
-            <Mychallenges />
-          </Route>
-          <Route exact path="/challengeworld">
-            <ChallengeWorld />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-          
-        </Switch>
+          <Switch>
+            <Route exact path="/login">
+              <Login />
+            </Route>
+            <Route exact path="/mychallenges">
+              <Mychallenges />
+            </Route>
+            <Route exact path="/challengeworld">
+              <ChallengeWorld />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
         </Container>
       </Router>
     </ApolloProvider>
