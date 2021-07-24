@@ -1,18 +1,18 @@
 import React from "react";
 
-import { useQuery } from "@apollo/client";
+// import { useQuery } from "@apollo/client";
 
-import PostList from "../components/Footer";
+// import PostList from "../components/Footer";
 
-import { QUERY_POSTS } from "../utils/queries";
+// import { QUERY_POSTS } from "../utils/queries";
 
 import Carousel from '../components/Carousel';
 
 import Hero from "../components/Hero";
 
 const Home = () => {
-  const { loading, data } = useQuery(QUERY_POSTS);
-  const posts = data?.posts || [];
+  // const { loading, data } = useQuery(QUERY_POSTS);
+  // const posts = data?.posts || [];
 
   return (
     <main>

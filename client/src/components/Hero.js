@@ -13,12 +13,12 @@ function Hero (props) {
               <Container fluid={true}>
                   <Row className="justify-content-center py-5">
                       <Col md={8} sm={12}>
-            <h1 className="display-3">Application Description (Jumbotron)</h1>
-            <p className="lead">This is a simple hero unit, a simple Jumbotron-style component for calling extra attention to featured content or information.</p>
+            <h1 className="display-3">Are you ready to Axcept the Challenge?</h1>
+            <p className="lead"> If you thrive on challenges and hate to be outdone, you may want to find some "friendly competition." </p>
             <hr className="my-2" />
-            <p>Why you should sign up... </p>
+            <p>Issue and axcept challenges in your community and around the world!</p>
             <p className="lead">
-              <Button color="primary">Learn More</Button>
+              <Button color="primary">Get Started</Button>
             </p>
                 </Col>
                 </Row>
