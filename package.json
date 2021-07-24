@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/fmcdermott4/challengeAxcepted#readme",
   "dependencies": {
+    "chokidar": "^3.5.2",
     "react-timekeeper": "^2.1.3"
   }
 }
