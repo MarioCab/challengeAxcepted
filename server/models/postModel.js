@@ -11,20 +11,19 @@ const postSchema = new Schema({
   body: {
     type: String,
   },
-  challenge: {
-    type: String,
-    // enum: ["Foot Race", "Drink off", "Axe Throwing"],
-  },
-  dateCreated: {
-    type: Date,
-    default: Date.now,
-  },
+  // challenge: {
+  //   type: String,
+  //   // enum: ["Foot Race", "Drink off", "Axe Throwing"],
+  // },
+  // dateCreated: {
+  //   type: Date,
+  //   default: Date.now,
+  // },
   location: {
     type: String,
   },
-  issuer: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
+  userId: {
+    type: String,
   },
 });
 

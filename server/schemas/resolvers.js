@@ -10,23 +10,38 @@ const resolvers = {
     users: async () => {
       return await User.find({}).populate("posts");
     },
+    getUser: async (parent, { _id }) => {
+      return await User.findOne({ _id }).populate("posts");
+    },
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id })
+        return User.findOne({ _id: context.user._id });
       }
-      throw new AuthenticationError('You need to be logged in!');
-    }
+      throw new AuthenticationError("You need to be logged in!");
+    },
+    auth: async (parent, { _id }) => {
+      return await User.findOne({});
+    },
   },
 
   Mutation: {
     addUser: async (parent, { username, password, email }) => {
       return User.create({ username, password, email });
     },
-    addPost: async (
-      parent,
-      { title, body, challenge, dateCreated, location }
-    ) => {
-      return Post.create({ title, body, challenge, dateCreated, location });
+    addPost: async (parent, { title, body, location, userId }) => {
+      const post = await Post.create({
+        title,
+        body,
+        location,
+        userId,
+      });
+
+      await User.findOneAndUpdate(
+        { _id: userId },
+        { $addToSet: { posts: post._id } }
+      );
+
+      return post;
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });

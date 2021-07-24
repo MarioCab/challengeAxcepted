@@ -15,11 +15,16 @@ const QUERY_USERS = gql`
 `;
 
 const QUERY_ME = gql`
-query me {
-  me {
-    _id
+  query getUser($email: String!) {
+    getUser(email: $email) {
+      _id
+      username
+      email
+      posts {
+        _id
+      }
+    }
   }
-}
 `;
 
 const QUERY_POSTS = gql`
@@ -31,10 +36,7 @@ const QUERY_POSTS = gql`
       challenge
       dateCreated
       location
-      issuer {
-        _id
-        username
-      }
+      userId
     }
   }
 `;

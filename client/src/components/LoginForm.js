@@ -44,7 +44,7 @@ const LoginForm = (props) => {
       });
       console.log(userFormData);
       console.log(data);
-      Auth.login(data.login.token);
+      Auth.login(data.login.token, userFormData.email);
 
       // window.location.reload()
     } catch (err) {

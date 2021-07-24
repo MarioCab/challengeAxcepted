@@ -8,7 +8,7 @@ const typeDefs = gql`
     challenge: String
     dateCreated: String
     location: String
-    issuer: User
+    userId: String
   }
 
   type User {
@@ -20,7 +20,7 @@ const typeDefs = gql`
   }
 
   type Auth {
-    token: ID!
+    token: ID
     user: User
   }
 
@@ -28,19 +28,15 @@ const typeDefs = gql`
     posts: [Post]
     post(_id: ID!): Post
     users: [User]
-    user(username: String!): User
-    me(_id: String!):User
+    getUser(_id: ID!): User
+    me(_id: ID!): User
+    auth: Auth
   }
 
   type Mutation {
     addUser(username: String!, password: String!, email: String!): User
-    addPost(
-      title: String!
-      body: String
-      challenge: String
-      dateCreated: String
-      location: String
-    ): Post
+
+    addPost(title: String, body: String, location: String, userId: String): Post
 
     login(email: String!, password: String!): Auth
 

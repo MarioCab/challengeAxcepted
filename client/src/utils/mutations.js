@@ -12,17 +12,10 @@ const ADD_POST = gql`
   mutation addPost(
     $title: String!
     $body: String
-    $challenge: String
-    $dateCreated: String
     $location: String
+    $userId: ID
   ) {
-    addPost(
-      title: $title
-      body: $body
-      challenge: $challenge
-      dateCreated: $dateCreated
-      location: $location
-    ) {
+    addPost(title: $title, body: $body, location: $location, _id: $id) {
       _id
     }
   }

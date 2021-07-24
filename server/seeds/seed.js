@@ -20,7 +20,7 @@ db.once("open", async () => {
 
     //randomly add a user to each post
 
-    newPost.issuer = tempUser._id;
+    newPost.userId = tempUser._id;
     await newPost.save();
   }
 
