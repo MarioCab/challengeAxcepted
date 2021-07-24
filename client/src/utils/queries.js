@@ -14,6 +14,14 @@ const QUERY_USERS = gql`
   }
 `;
 
+const QUERY_ME = gql`
+query me {
+  me {
+    _id
+  }
+}
+`;
+
 const QUERY_POSTS = gql`
   query allPosts {
     posts {
@@ -31,4 +39,4 @@ const QUERY_POSTS = gql`
   }
 `;
 
-export { QUERY_USERS, QUERY_POSTS };
+export { QUERY_USERS, QUERY_POSTS, QUERY_ME };
