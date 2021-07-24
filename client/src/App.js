@@ -18,7 +18,7 @@ import Nav from "react-bootstrap/Nav";
 import Login from "./pages/Login";
 import LoginLink from "./components/LoginLink";
 
-import Auth from "./utils/auth"
+import Auth from "./utils/auth";
 
 import Header from "./components/Header";
 import Mychallenges from "./pages/Mychallenges";
@@ -96,7 +96,7 @@ const client = new ApolloClient({
 const logout = (event) => {
   event.preventDefault();
   Auth.logout();
-}
+};
 
 function App() {
   return (
@@ -116,7 +116,7 @@ function App() {
                 <Link className="nav-link" to="/challengeworld">
                   Challenge World
                 </Link>
-                <Link className="nav-link" to="/mychallenges">
+                <Link className="nav-link" to="/me">
                   My Challenges
                 </Link>
                 <LoginLink />
@@ -129,7 +129,10 @@ function App() {
             <Route exact path="/login">
               <Login />
             </Route>
-            <Route exact path="/mychallenges">
+            <Route exact path="/me">
+              <Mychallenges />
+            </Route>
+            <Route exact path="/userchallenges/:_id">
               <Mychallenges />
             </Route>
             <Route exact path="/challengeworld">

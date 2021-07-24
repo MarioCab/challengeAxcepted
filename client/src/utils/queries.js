@@ -14,6 +14,20 @@ const QUERY_USERS = gql`
   }
 `;
 
+const QUERY_USER = gql`
+  query getUser($id: ID!) {
+    getUser(id: $id) {
+      _id
+      username
+      email
+      posts {
+        title
+        body
+      }
+    }
+  }
+`;
+
 const QUERY_ME = gql`
   query getUser($email: String!) {
     getUser(email: $email) {
@@ -44,7 +58,7 @@ const QUERY_POSTS = gql`
   }
 `;
 
-const QUERY_GETPOST = gql`
+const QUERY_GET_POST = gql`
   query getPost($id: ID!) {
     getPost(_id: $id) {
       title
@@ -55,4 +69,4 @@ const QUERY_GETPOST = gql`
   }
 `;
 
-export { QUERY_USERS, QUERY_POSTS, QUERY_ME, QUERY_GETPOST };
+export { QUERY_USERS, QUERY_POSTS, QUERY_ME, QUERY_GET_POST, QUERY_USER };
