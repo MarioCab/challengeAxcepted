@@ -22,6 +22,9 @@ const QUERY_ME = gql`
       email
       posts {
         _id
+        title
+        body
+        location
       }
     }
   }
@@ -41,4 +44,15 @@ const QUERY_POSTS = gql`
   }
 `;
 
-export { QUERY_USERS, QUERY_POSTS, QUERY_ME };
+const QUERY_GETPOST = gql`
+  query getPost($id: ID!) {
+    getPost(_id: $id) {
+      title
+      body
+      location
+      userId
+    }
+  }
+`;
+
+export { QUERY_USERS, QUERY_POSTS, QUERY_ME, QUERY_GETPOST };

@@ -7,11 +7,14 @@ const resolvers = {
     posts: async () => {
       return await Post.find({}).populate("issuer");
     },
+    getPost: async (parent, { id }) => {
+      return await Post.findOne({ id });
+    },
     users: async () => {
       return await User.find({}).populate("posts");
     },
-    getUser: async (parent, { _id }) => {
-      return await User.findOne({ _id }).populate("posts");
+    getUser: async (parent, { id }) => {
+      return await User.findOne({ id }).populate("posts");
     },
     me: async (parent, args, context) => {
       if (context.user) {
