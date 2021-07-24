@@ -28,7 +28,7 @@ const typeDefs = gql`
     posts: [Post]
     getPost(id: ID!): Post
     users: [User]
-    getUser(id: ID!): User
+    getUser(username: String): User
     me: User
     auth: Auth
   }

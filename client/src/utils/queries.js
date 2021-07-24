@@ -15,22 +15,24 @@ const QUERY_USERS = gql`
 `;
 
 const QUERY_USER = gql`
-  query getUser($id: ID!) {
-    getUser(id: $id) {
+  query getUser($username: String) {
+    getUser(username: $username) {
       _id
       username
       email
       posts {
+        _id
         title
         body
+        location
       }
     }
   }
 `;
 
 const QUERY_ME = gql`
-  query getUser($email: String!) {
-    getUser(email: $email) {
+  query me {
+    me {
       _id
       username
       email

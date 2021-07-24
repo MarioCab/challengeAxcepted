@@ -40,18 +40,6 @@ const httpLink = createHttpLink({
   uri: "/graphql",
 });
 
-// const authLink = setContext((_, { headers }) => {
-//   // get the authentication token from local storage if it exists
-//   const token = localStorage.getItem("id_token");
-//   // return the headers to the context so httpLink can read them
-//   return {
-//     headers: {
-//       ...headers,
-//       authorization: token ? `Bearer ${token}` : "",
-//     },
-//   };
-// });
-
 // const client = new ApolloClient({
 //   link: authLink.concat(httpLink),
 //   cache: new InMemoryCache(),
@@ -78,20 +66,6 @@ const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
-
-// class App extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       title: 'Challenge Axcepted',
-//       headerLinks: [
-//         { title: 'Home', path: '/'},
-//         { title: 'Login', path: '/login'},
-//         { title: 'My Challenges', path: '/mychallenges'}
-//       ]
-//     }
-//   }
-// }
 
 const logout = (event) => {
   event.preventDefault();
@@ -132,7 +106,7 @@ function App() {
             <Route exact path="/me">
               <Mychallenges />
             </Route>
-            <Route exact path="/userchallenges/:_id">
+            <Route exact path="/user/:username">
               <Mychallenges />
             </Route>
             <Route exact path="/challengeworld">
