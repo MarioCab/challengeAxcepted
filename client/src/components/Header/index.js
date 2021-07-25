@@ -14,7 +14,7 @@ return(
     <div>
     {Auth.loggedIn() ? (
       <>
-        <span class="text-danger">{Auth.getProfile().data.username} LOGGED IN</span>
+        <span className="text-danger">{Auth.getProfile().data.username} LOGGED IN</span>
         <button className="btn btn-lg btn-light m-2" onClick={logout}>
           Logout
         </button>

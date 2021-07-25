@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { Nav, Modal, Tab, Button } from "react-bootstrap";
 import Auth from "../utils/auth"
 
@@ -17,10 +17,12 @@ const LoginLink = () => {
     useState(false);
 
   return (
+    
+
     <div>
     {Auth.loggedIn() ? (
       <>
-        <span class="text-success">{Auth.getProfile().data.username} LOGGED IN</span>
+        <span className="text-success">{Auth.getProfile().data.username} LOGGED IN</span>
         <Button 
         variant="danger"
         // className="btn btn-small btn-primary m-2" 

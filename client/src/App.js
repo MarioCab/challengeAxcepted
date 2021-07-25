@@ -20,7 +20,7 @@ import LoginLink from "./components/LoginLink";
 
 import Auth from "./utils/auth";
 
-import Header from "./components/Header";
+// import Header from "./components/Header";
 import Mychallenges from "./pages/Mychallenges";
 import ChallengeWorld from "./components/ChallengeWorld";
 
@@ -67,10 +67,10 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-const logout = (event) => {
-  event.preventDefault();
-  Auth.logout();
-};
+// const logout = (event) => {
+//   event.preventDefault();
+//   Auth.logout();
+// };
 
 function App() {
   return (
@@ -87,12 +87,17 @@ function App() {
                 </Link>
                 {/* <LoginLink /> */}
                 {/* <Link className="nav-link" to="/login">Login</Link> */}
+                <>
+                {Auth.loggedIn() ? (
+                  <>
                 <Link className="nav-link" to="/challengeworld">
                   Challenge World
                 </Link>
                 <Link className="nav-link" to="/me">
                   My Challenges
                 </Link>
+                </>):(<></>)}
+                </>
                 <LoginLink />
                 {/* <Header /> */}
               </Nav>
