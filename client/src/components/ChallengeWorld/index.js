@@ -3,6 +3,8 @@ import { Form, Row, Col, Button } from "react-bootstrap";
 import { ADD_POST } from "../../utils/mutations";
 import { useMutation, useQuery } from "@apollo/client";
 import { QUERY_ME } from "../../utils/queries";
+import { Router } from "react-router-dom";
+import { useHistory } from "react-router";
 
 const ChallengeWorld = () => {
   const { loading, me } = useQuery(QUERY_ME);
@@ -29,10 +31,11 @@ const ChallengeWorld = () => {
   };
 
   // submit form
+  let history = useHistory();
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(formState);
-
+    history.push("/");
     try {
       const { data } = await addPost({
         variables: { ...formState },
