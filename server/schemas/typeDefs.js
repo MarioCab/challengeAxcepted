@@ -14,6 +14,7 @@ const typeDefs = gql`
   }
   type Comment {
     _id: ID
+    postId: String
     commenter: String
     postDate: String
     comment: String

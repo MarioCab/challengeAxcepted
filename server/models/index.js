@@ -2,4 +2,6 @@ const Post = require("./postModel");
 
 const User = require("./userModel");
 
-module.exports = { Post, User };
+const Comment = require("./commentModel");
+
+module.exports = { Post, User, Comment };

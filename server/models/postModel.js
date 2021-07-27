@@ -30,16 +30,9 @@ const postSchema = new Schema({
   },
   comments: [
     {
-      commenter: {
-        type: String
-      },
-      postDate: {
-        type: String
-      },
-      comment: {
-        type: String
-      }
-    }
+      type: Schema.Types.ObjectId,
+      ref: "Comment",
+    },
   ],
 });
 
