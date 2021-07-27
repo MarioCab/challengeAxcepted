@@ -1,4 +1,4 @@
-const { Post, User } = require("../models");
+const { Post, User, Comment } = require("../models");
 const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
 
@@ -90,15 +90,16 @@ const resolvers = {
       );
     },
     commentPost: async (parent, {postId, commenter, postDate, comment}) => {
-      return Post.findOneAndUpdate({
+      const commentPosted = await Comment.create({postId, commenter, postDate, comment})
+      const post = await Post.findOneAndUpdate({
         _id: postId,
       },
-      {$push:
-         {comments: {"commenter": commenter, "postDate": postDate, "comment": comment}
-        }        
+      {$addToSet:
+        {comments: commentPosted}        
       },
       {new: true}
       )
+      return(post)
     }
   }
 };
