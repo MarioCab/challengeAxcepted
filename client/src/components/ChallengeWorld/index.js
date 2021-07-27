@@ -9,17 +9,20 @@ import AuthService from "../../utils/auth";
 
 const ChallengeWorld = () => {
   const userPorf = AuthService.getProfile();
-  const usernamereal = userPorf.data._id;
+  const userId = userPorf.data._id;
+  const poster = userPorf.data.username;
+
   console.log(userPorf);
 
-  const { loading, me } = useQuery(QUERY_ME);
-  console.log(me);
+  // const { loading, me } = useQuery(QUERY_ME);
+  // console.log(me);
 
   const [formState, setFormState] = useState({
     title: "",
     body: "",
     location: "",
-    userId: usernamereal,
+    userId: userId,
+    username: poster,
   });
   const [addPost, { error, data }] = useMutation(ADD_POST);
   if (error) {
@@ -28,10 +31,11 @@ const ChallengeWorld = () => {
   // update state based on form input changes
   const handleChange = (event) => {
     const { name, value } = event.target;
-
+    console.log(formState);
     setFormState({
       ...formState,
       [name]: value,
+      username: poster,
     });
   };
 

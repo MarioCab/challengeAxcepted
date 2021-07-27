@@ -56,6 +56,7 @@ const QUERY_POSTS = gql`
       dateCreated
       location
       userId
+      username
     }
   }
 `;

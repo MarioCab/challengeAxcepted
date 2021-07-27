@@ -14,8 +14,15 @@ const ADD_POST = gql`
     $body: String
     $location: String
     $userId: String
+    $username: String
   ) {
-    addPost(title: $title, body: $body, location: $location, userId: $userId) {
+    addPost(
+      title: $title
+      body: $body
+      location: $location
+      userId: $userId
+      username: $username
+    ) {
       _id
       userId
     }

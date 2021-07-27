@@ -17,6 +17,9 @@ const PostList = ({ posts }) => {
               <div className="card-body bg-light p-2">
                 <p>{post.challenge}</p>
               </div>
+              <div className="card-body bg-light p-2">
+                <a href="/user/:{username}">{post.username}</a>
+              </div>
             </div>
           ))}
       </div>
