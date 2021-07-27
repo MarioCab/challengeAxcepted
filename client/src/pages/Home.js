@@ -12,8 +12,8 @@ import Hero from "../components/Hero";
 
 const Home = () => {
   const { loading, data } = useQuery(QUERY_POSTS);
-  // const posts = data?.posts || [];                    //normal post order
-  const posts = [...data?.posts].reverse() || [];        //reverse post order
+  const posts = data?.posts || [];                    //normal post order
+  // const posts = [...data?.posts].reverse() || [];        //reverse post order
 
   return (
     <main className="text-center">
