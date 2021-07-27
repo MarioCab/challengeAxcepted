@@ -1,24 +1,26 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import {Nav, Modal, Tab } from 'react-bootstrap';
-import SignUpForm from '../components/SignupForm';
-import LoginForm from '../components/LoginForm';
+import React from 'react';
+// import React, { useState } from 'react';
+// import { Link } from 'react-router-dom';
+// import {Nav, Modal, Tab } from 'react-bootstrap';
+import LoginLink from '../components/LoginLink'
+// import SignUpForm from '../components/SignupForm';
+// import LoginForm from '../components/LoginForm';
 
 const Login = () => {
-    const [showModal, setShowModal] = 
+    // const [showModal, setShowModal] = 
     // true; 
-    useState(false);
+    // useState(false);
 
 return(
-    <div>
-    <h1>LOGIN</h1>
-    <Link onClick={() => setShowModal(true)}>Login/Sign Up</Link>
+    <div className="text-center">
+    <h1>YOU MUST LOGIN OR SIGNUP</h1>
+    <LoginLink />
+    {/* <Link onClick={() => setShowModal(true)}>Login/Sign Up</Link>
     <Modal
         size='lg'
         show={showModal}
         onHide={() => setShowModal(false)}
         aria-labelledby='signup-modal'>
-        {/* tab container to do either signup or login component */}
         <Tab.Container defaultActiveKey='login'>
           <Modal.Header closeButton>
             <Modal.Title id='signup-modal'>
@@ -43,7 +45,7 @@ return(
             </Tab.Content>
           </Modal.Body>
         </Tab.Container>
-      </Modal>
+      </Modal> */}
 
 
 
