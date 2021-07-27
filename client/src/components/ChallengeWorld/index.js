@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { Form, Row, Col, Button } from "react-bootstrap";
+// import { Form, Row, Col, Button } from "react-bootstrap";
+import { Form, Col } from "react-bootstrap";
 import { ADD_POST } from "../../utils/mutations";
-import { useMutation, useQuery } from "@apollo/client";
-import { QUERY_ME } from "../../utils/queries";
-import { Router } from "react-router-dom";
+// import { useMutation, useQuery } from "@apollo/client";
+import { useMutation } from "@apollo/client";
+// import { QUERY_ME } from "../../utils/queries";
+// import { Router } from "react-router-dom";
 import { useHistory } from "react-router";
 import AuthService from "../../utils/auth";
 
@@ -24,7 +26,9 @@ const ChallengeWorld = () => {
     userId: userId,
     username: poster,
   });
-  const [addPost, { error, data }] = useMutation(ADD_POST);
+  const [addPost, { error, 
+    // data 
+  }] = useMutation(ADD_POST);
   if (error) {
     console.log(error);
   }

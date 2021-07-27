@@ -6,9 +6,9 @@ import PostList from "../components/PostList";
 
 import { QUERY_ME, QUERY_USER } from "../utils/queries";
 
-import Carousel from "../components/Carousel";
+// import Carousel from "../components/Carousel";
 
-import Hero from "../components/Hero";
+// import Hero from "../components/Hero";
 
 import Auth from "../utils/auth";
 
