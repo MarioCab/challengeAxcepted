@@ -1,22 +1,24 @@
 // import React, { Component } from 'react';
 import React, { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel'; 
+const path = require("path")
 
-
-const data = [
+// const images =require('./images')
+//path.join(__dirname, "../../public/exercise.html")
+const data= [
   {
-   image: require('../components/images/armwrestling.jpeg'), 
+   image: 'armwrestling.jpeg', 
    caption:"Caption",
    description:"Description Here"
   },
   {
-    image:require('../components/images/tugofwar.png'), 
+    image: 'tugofwar.png', 
     caption:"Caption",
     description:"Description Here"
    },
    {
-    image:require('../components/images/fourloko.jpeg'), 
-    caption:"Caption",
+    image:'fourloko.jpeg', 
+    caption:"Four Loko",
     description:"Description Here"
    } 
 ]
@@ -29,13 +31,15 @@ function HomeCarousel() {
 
   return (
     <Carousel activeIndex={index} onSelect={handleSelect}>
-       {data.map((slide, i) => {
+       {data && data.map((slide) => {
+        //  {console.dir(slide.image)}
         return (
-          <Carousel.Item>        
+          
+          <Carousel.Item align="center">        
         <img
-          className="d-block w-100"
-          src={slide.image}
-          alt="slider image"
+          className="d-block w-50"
+          src={path.join(__dirname,`${slide.image}`)}
+          alt="slider img"
         />
         <Carousel.Caption>
           <h3>{slide.caption}</h3>
