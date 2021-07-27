@@ -24,6 +24,8 @@ const Mychallenges = () => {
 
   const user = data?.me || data?.getUser || {};
   console.log(user);
+  const posts = user.posts || [];                    //
+  let p = [...posts].reverse()
 
 
   // if (data?.me === data?.getUser){
@@ -55,7 +57,7 @@ const Mychallenges = () => {
       {/* <Hero/>   */}
       {/* <Carousel/>  */}
       <div className="col-12 col-md-8 mb-3">
-        {loading ? <div>Loading...</div> : <PostList posts={user.posts} />}
+        {loading ? <div>Loading...</div> : <PostList posts={p} />}
       </div>
     </main>
   );
