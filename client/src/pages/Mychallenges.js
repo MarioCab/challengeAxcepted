@@ -13,6 +13,7 @@ import Hero from "../components/Hero";
 import Auth from "../utils/auth";
 
 const Mychallenges = () => {
+  
   const { username: userParam } = useParams();
 
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
@@ -24,15 +25,22 @@ const Mychallenges = () => {
   const user = data?.me || data?.getUser || {};
   console.log(user);
 
+
+  // if (data?.me === data?.getUser){
+  //   return <Redirect to="/me" />
+  // }
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+    // console.dir(1)
     return <Redirect to="/me" />;
   }
 
   if (loading) {
+    // console.dir(2)
     return <div>Challenges Await</div>;
   }
 
   if (!user?.username) {
+    // console.dir(3)
     return (
       <h1>
         Log in to see your challenges!!! You can use the links above to sing in
@@ -42,6 +50,8 @@ const Mychallenges = () => {
   }
   return (
     <main>
+          {/* {console.dir(4)} */}
+
       {/* <Hero/>   */}
       {/* <Carousel/>  */}
       <div className="col-12 col-md-8 mb-3">
