@@ -50,6 +50,7 @@ const ChallengeWorld = () => {
         variables: { ...formState },
       });
     } catch {}
+    window.location.reload();
   };
   return (
     <div>
