@@ -10,6 +10,19 @@ const typeDefs = gql`
     location: String
     userId: String
     username: String
+    comments: [Comment]
+  }
+  type Comment {
+    _id: ID
+    commenter: String
+    postDate: String
+    comment: String
+  }
+  input createComment{
+    _id: ID
+    commenter: String
+    postDate: String
+    comment: String
   }
 
   type User {
@@ -42,6 +55,8 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
 
     deletePost(_id: ID!): Post
+
+    commentPost(_id: ID, commenter: String, postDate: String, comment: String): Post 
 
     updatePost(
       postId: ID!

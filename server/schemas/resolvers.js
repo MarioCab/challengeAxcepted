@@ -5,7 +5,7 @@ const { signToken } = require("../utils/auth");
 const resolvers = {
   Query: {
     posts: async () => {
-      return Post.find({}).populate("issuer");
+      return Post.find({}).populate("issuer").populate("comments");
     },
     getPost: async (parent, { id }) => {
       return Post.findOne({ _id: id });
@@ -89,6 +89,17 @@ const resolvers = {
         }
       );
     },
-  },
+    commentPost: async (parent, {postId, commenter, postDate, comment}) => {
+      return Post.findOneAndUpdate({
+        _id: postId,
+      },
+      {$push:
+         {comments: {"commenter": commenter, "postDate": postDate, "comment": comment}
+        }        
+      },
+      {new: true}
+      )
+    }
+  }
 };
 module.exports = resolvers;

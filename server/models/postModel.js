@@ -28,6 +28,19 @@ const postSchema = new Schema({
   username: {
     type: String,
   },
+  comments: [
+    {
+      commenter: {
+        type: String
+      },
+      postDate: {
+        type: String
+      },
+      comment: {
+        type: String
+      }
+    }
+  ],
 });
 
 // thinking we maybe use an api to call a google maps to a specific area where the challange will be held. Also trying to figure out how to allow users to select a date and time for the challenge, maybe that doesnt even need to go into the schema. Prob doesnt

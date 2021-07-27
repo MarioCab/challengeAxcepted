@@ -47,8 +47,9 @@ const ChallengeWorld = () => {
   let history = useHistory();
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
+    console.log(formState);    
     history.push("/");
+    
     try {
       const { data } = await addPost({
         variables: { ...formState },
