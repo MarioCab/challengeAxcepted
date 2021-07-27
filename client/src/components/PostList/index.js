@@ -1,9 +1,18 @@
 import React from "react";
+import { useHistory } from "react-router";
 
 const PostList = ({ posts }) => {
+  let history = useHistory();
+  // const loadUser = () => {
+  //   history.push("/user/" + `${post.username}`);
+  // };
   if (!posts.length) {
     return <h3>No Challenges Yet</h3>;
   } else {
+    // let history = useHistory();
+    const loadUser = (post) => {
+      return "/user/" + `${post.username}`;
+    };
     return (
       <div>
         <h3> Hello </h3>
@@ -16,6 +25,9 @@ const PostList = ({ posts }) => {
               </h4>
               <div className="card-body bg-light p-2">
                 <p>{post.challenge}</p>
+              </div>
+              <div className="card-body bg-light p-2">
+                <a href={loadUser(post)}>{post.username}</a>
               </div>
             </div>
           ))}

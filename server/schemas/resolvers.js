@@ -33,12 +33,13 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addPost: async (parent, { title, body, location, userId }) => {
+    addPost: async (parent, { title, body, location, userId, username }) => {
       const post = await Post.create({
         title,
         body,
         location,
         userId,
+        username,
       });
 
       await User.findOneAndUpdate(

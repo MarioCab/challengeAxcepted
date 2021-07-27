@@ -5,16 +5,24 @@ import { useMutation, useQuery } from "@apollo/client";
 import { QUERY_ME } from "../../utils/queries";
 import { Router } from "react-router-dom";
 import { useHistory } from "react-router";
+import AuthService from "../../utils/auth";
 
 const ChallengeWorld = () => {
-  const { loading, me } = useQuery(QUERY_ME);
-  console.log(me);
+  const userPorf = AuthService.getProfile();
+  const userId = userPorf.data._id;
+  const poster = userPorf.data.username;
+
+  console.log(userPorf);
+
+  // const { loading, me } = useQuery(QUERY_ME);
+  // console.log(me);
 
   const [formState, setFormState] = useState({
     title: "",
     body: "",
     location: "",
-    userId: "60fc82797cd08e25d8c9c4a9",
+    userId: userId,
+    username: poster,
   });
   const [addPost, { error, data }] = useMutation(ADD_POST);
   if (error) {
@@ -23,10 +31,11 @@ const ChallengeWorld = () => {
   // update state based on form input changes
   const handleChange = (event) => {
     const { name, value } = event.target;
-
+    console.log(formState);
     setFormState({
       ...formState,
       [name]: value,
+      username: poster,
     });
   };
 
