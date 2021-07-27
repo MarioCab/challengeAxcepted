@@ -6,32 +6,24 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Auth from "../utils/auth";
-import { useQuery } from "@apollo/client";
-import { QUERY_ME, QUERY_USER } from "../utils/queries";
+import AuthService from "../utils/auth";
+import { useHistory } from "react-router";
+import LoginForm from "./LoginForm";
+import decode from "jwt-decode";
 
 const Hero = () => {
-  const { username: userParam } = useParams();
-
-  const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
-    variables: { username: userParam },
-  });
-
-  console.log(data);
-
-  const user = data?.me || data?.getUser || {};
-  console.log(user);
+  let history = useHistory();
 
   const handleRedirect = (event) => {
     event.preventDefault();
-    if (Auth.getProfile().data.username === userParam) {
-      return <Redirect to="/challengeworld" />;
+
+    if (AuthService.loggedIn() === true) {
+      console.log("Logged In");
+      history.push("./challengeworld");
+    } else {
+      console.log("???s");
+      history.push("./login");
     }
-    if (loading) {
-      return <h1>Loading...</h1>;
-    }
-    if (!user?.username) {
-      return <h1>Log in to post a challenge!</h1>;
-    } else console.log("dang she aint workin");
   };
 
   return (
