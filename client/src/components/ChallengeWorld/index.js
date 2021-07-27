@@ -5,8 +5,13 @@ import { useMutation, useQuery } from "@apollo/client";
 import { QUERY_ME } from "../../utils/queries";
 import { Router } from "react-router-dom";
 import { useHistory } from "react-router";
+import AuthService from "../../utils/auth";
 
 const ChallengeWorld = () => {
+  const userPorf = AuthService.getProfile();
+  const usernamereal = userPorf.data._id;
+  console.log(userPorf);
+
   const { loading, me } = useQuery(QUERY_ME);
   console.log(me);
 
@@ -14,7 +19,7 @@ const ChallengeWorld = () => {
     title: "",
     body: "",
     location: "",
-    userId: "60fc82797cd08e25d8c9c4a9",
+    userId: usernamereal,
   });
   const [addPost, { error, data }] = useMutation(ADD_POST);
   if (error) {
