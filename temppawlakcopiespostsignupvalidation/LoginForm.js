@@ -1,18 +1,22 @@
+// see SignupForm.js for comments
 import React, { useState } from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 
 import { Form, Button, Alert } from "react-bootstrap";
+// import {QUERY_USERS} from "../utils/queries"
 import { LOGIN_USER } from "../utils/mutations";
 
+// import { loginUser } from "../utils/API";
+// '..//API';
 import Auth from "../utils/auth";
 
-const LoginForm = () => { //props
+const LoginForm = (props) => {
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
-  const [validated, setValidated] = useState(false);
-  const [showAlert, setShowAlert] = useState(false);
+  // const [validated] = useState(false);
+  // const [showAlert, setShowAlert] = useState(false);
 
-  const [loginUser, { error }] = useMutation(LOGIN_USER);
+  const [loginUser, { error, data }] = useMutation(LOGIN_USER);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -25,7 +29,7 @@ const LoginForm = () => { //props
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    // console.log(userFormData);
+    console.log(userFormData);
 
     // check if form has everything (as per react-bootstrap docs)
     // const form = event.currentTarget;
@@ -35,40 +39,22 @@ const LoginForm = () => { //props
     // }
 
     try {
-      // const form = event.currentTarget;
-      // if (form.checkValidity() === false) {
-      //   console.log("test if")
-      //   event.preventDefault();
-      //   event.stopPropagation();
-      //   throw new Error("error");
-
-      // }else{
-  
-      setValidated(true);
-
       const { data } = await loginUser({
         variables: { ...userFormData },
       });
-      // console.log(userFormData);
-      console.log("through");
+      console.log(userFormData);
+      console.log(data);
       Auth.login(data.login.token, userFormData.email);
-    // }
 
       // window.location.reload()
     } catch (err) {
       console.error(err);
-      console.dir("err path")
-      setShowAlert(true);
-
-      event.preventDefault();
-      event.stopPropagation();
-
     }
 
-    // setUserFormData({
-    //   email: "",
-    //   password: "",
-    // });
+    setUserFormData({
+      email: "",
+      password: "",
+    });
 
     // try {
     //   const response = await loginUser(userFormData);
@@ -105,31 +91,28 @@ const LoginForm = () => { //props
   return (
     <>
       <Form
-        noValidate validated={validated}
+        // noValidate validated={validated}
         onSubmit={handleFormSubmit}
       >
-        {error && (
-        <Alert
-          // dismissible
+        {/* <Alert
+          dismissible
           onClose={() => setShowAlert(false)}
           show={showAlert}
           variant="danger"
         >
-          Something went wrong with your login credentials! -- {error.message}
-        </Alert>
-        )}
+          Something went wrong with your login credentials!
+        </Alert> */}
         <Form.Group>
           <Form.Label htmlFor="email">Email</Form.Label>
           <Form.Control
-            type="email"
+            type="text"
             placeholder="Your email"
             name="email"
             onChange={handleChange}
             value={userFormData.email}
-            required
           />
           <Form.Control.Feedback type="invalid">
-            Valid Email is required!
+            Email is required!
           </Form.Control.Feedback>
         </Form.Group>
 
@@ -139,14 +122,11 @@ const LoginForm = () => { //props
             type="password"
             placeholder="Your password"
             name="password"
-            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-
             onChange={handleChange}
             value={userFormData.password}
-            required
           />
           <Form.Control.Feedback type="invalid">
-          Valid Password is required! Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters
+            Password is required!
           </Form.Control.Feedback>
         </Form.Group>
         <Button
