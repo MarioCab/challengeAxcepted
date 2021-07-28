@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router";
+import { Form, Button, Alert } from "react-bootstrap";
 
 const PostList = ({ posts }) => {
   let history = useHistory();
@@ -12,6 +13,10 @@ const PostList = ({ posts }) => {
     // let history = useHistory();
     const loadUser = (post) => {
       return "/user/" + `${post.username}`;
+      
+    // const loadCommenter = (comment) => {
+    //   return "/user/" + `${comment.commenter}`
+    // }
     };
     return (
       <div>
@@ -29,14 +34,31 @@ const PostList = ({ posts }) => {
               <div className="card-body bg-light p-2">
                 <a href={loadUser(post)}>{post.username}</a>
               </div>
-              {posts.comments && 
-                posts.comments.map((comment) =>(
+              {post.comments && 
+                post.comments.map((comment) =>(
+                  <>
                   <div>
-                    <p>{posts.comment}</p>
+                    <a href={`/user/${comment.commenter}`}>{comment.commenter}</a>
+                    <p>{comment.comment}</p>
                   </div>
+                </>
                 )
+
                 )
               }
+                              <>
+                <Form>
+                {/* <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                  <Form.Label>Email address</Form.Label>
+                  <Form.Control type="email" placeholder="name@example.com" />
+                </Form.Group> */}
+                <Form.Group className="mb-3 text-center" controlId="exampleForm.ControlTextarea1">
+                  <Form.Label>LEAVE A COMMENT</Form.Label>
+                  <Form.Control as="textarea" className= "w-50"rows={2} />
+                </Form.Group>
+              </Form>
+              </>
+
 
             </div>
           ))}
