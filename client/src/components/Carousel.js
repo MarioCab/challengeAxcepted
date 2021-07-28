@@ -6,21 +6,25 @@ const path = require("path")
 // const images =require('./images')
 //path.join(__dirname, "../../public/exercise.html")
 const data= [
-  {
-   image: 'armwrestling.jpeg', 
-   caption:"Caption",
-   description:"Description Here"
+  
+   {image: 'carousel-images/axe-throwing.jpg', 
+  //  caption:"Caption",
+  //  description:"Description Here"
   },
+  {image: 'carousel-images/arnold.gif'}, 
+
   {
-    image: 'tugofwar.png', 
-    caption:"Caption",
-    description:"Description Here"
+    image: 'carousel-images/tugofwar.png', 
+    // caption:"Caption",
+    // description:"Description Here"
    },
    {
-    image:'fourloko.jpeg', 
-    caption:"Four Loko",
-    description:"Description Here"
-   } 
+    image:'carousel-images/fourloko.jpeg', 
+    // caption:"Four Loko",
+    // description:"Description Here"
+   },
+   {image:'carousel-images/armwrestling.jpeg'},
+   {image:'carousel-images/boxing.jpg'}
 ]
 
 function HomeCarousel() {
