@@ -25,6 +25,13 @@ const QUERY_USER = gql`
         title
         body
         location
+        comments {
+          _id
+          postId
+          commenter
+          comment
+          postDate
+        }
       }
     }
   }

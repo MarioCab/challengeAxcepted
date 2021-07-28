@@ -11,10 +11,16 @@ const resolvers = {
       return Post.findOne({ _id: id });
     },
     users: async () => {
-      return User.find({}).populate("posts");
+      return User.find({}).populate("posts").populate({
+        path: "posts",
+        populate: "comments",
+      });
     },
     getUser: async (parent, { username }) => {
-      return User.findOne({ username }).populate("posts");
+      return User.findOne({ username }).populate("posts").populate({
+        path: "posts",
+        populate: "comments",
+      });
     },
     comments: async () => {
       return Comment.find({});
