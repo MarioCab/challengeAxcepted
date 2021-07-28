@@ -4,11 +4,18 @@ import { useMutation } from "@apollo/client";
 import { Form, Button, Alert } from "react-bootstrap";
 import CommentForm from "../CommentForm";
 import AuthService from "../../utils/auth";
+import Auth from "../../utils/auth";
+
 
 const PostList = ({ posts }) => {
-  const userProf = AuthService.getProfile().data.username;
-  const user = userProf.username;
-  console.log(userProf);
+  let userProf;
+  if (Auth.loggedIn()) {
+     userProf = AuthService.getProfile().data.username;
+
+  }
+
+  // const user = userProf.username;
+  // console.log(userProf);
   // console.log(username);
   let history = useHistory();
   // const loadUser = () => {
@@ -53,7 +60,8 @@ const PostList = ({ posts }) => {
                   </>
                 ))}
               <>
-                <CommentForm post={post} commenter={userProf} />
+              {Auth.loggedIn() && (
+                <CommentForm post={post} commenter={userProf} />)}
                 {/* <Form>
                   <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                   <Form.Label>Email address</Form.Label>

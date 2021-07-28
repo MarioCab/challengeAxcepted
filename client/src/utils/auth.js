@@ -6,6 +6,13 @@ class AuthService {
   // get user data
   getProfile() {
     return decode(this.getToken());
+
+    // try {
+    //   return decode(this.getToken());
+
+    // } catch (error) {
+    //   return ''
+    // }
   }
 
   // check if user's logged in
