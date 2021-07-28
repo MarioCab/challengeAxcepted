@@ -31,10 +31,10 @@ const Mychallenges = () => {
   // if (data?.me === data?.getUser){
   //   return <Redirect to="/me" />
   // }
-  if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
-    // console.dir(1)
-    return <Redirect to="/me" />;
-  }
+  // if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+  //   // console.dir(1)
+  //   return <Redirect to="/me" />;
+  // }
 
   if (loading) {
     // console.dir(2)

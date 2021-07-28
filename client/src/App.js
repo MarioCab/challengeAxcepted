@@ -73,6 +73,10 @@ const client = new ApolloClient({
 // };
 
 function App() {
+  let loggedInUser;
+  if (Auth.loggedIn()) {
+  loggedInUser = `/user/${Auth.getProfile().data.username}`
+  }
   return (
     <ApolloProvider client={client}>
       <Router>
@@ -93,7 +97,7 @@ function App() {
                 <Link className="nav-link" to="/challengeworld">
                   Challenge World
                 </Link>
-                <Link className="nav-link" to="/me">
+                <Link className="nav-link" to= {loggedInUser}>
                   My Challenges
                 </Link>
                 </>):(<></>)}
