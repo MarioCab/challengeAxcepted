@@ -1,13 +1,15 @@
 import React from "react";
 import { useHistory } from "react-router";
-import {useMutation} from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { Form, Button, Alert } from "react-bootstrap";
+import CommentForm from "../CommentForm";
 import AuthService from "../../utils/auth";
-import COMMENT_POST from "../../utils/mutations"
 
 const PostList = ({ posts }) => {
-  const commenter = AuthService.getProfile().data.username;
-  console.log(commenter);
+  const userProf = AuthService.getProfile().data.username;
+  const user = userProf.username;
+  console.log(userProf);
+  // console.log(username);
   let history = useHistory();
   // const loadUser = () => {
   //   history.push("/user/" + `${post.username}`);
@@ -18,10 +20,10 @@ const PostList = ({ posts }) => {
     // let history = useHistory();
     const loadUser = (post) => {
       return "/user/" + `${post.username}`;
-      
-    // const loadCommenter = (comment) => {
-    //   return "/user/" + `${comment.commenter}`
-    // }
+
+      // const loadCommenter = (comment) => {
+      //   return "/user/" + `${comment.commenter}`
+      // }
     };
     return (
       <div>
@@ -39,33 +41,36 @@ const PostList = ({ posts }) => {
               <div className="card-body bg-light p-2">
                 <a href={loadUser(post)}>{post.username}</a>
               </div>
-              {post.comments && 
-                post.comments.map((comment) =>(
+              {post.comments &&
+                post.comments.map((comment) => (
                   <>
-                  <div>
-                    <a href={`/user/${comment.commenter}`}>{comment.commenter}</a>
-                    <p>{comment.comment}</p>
-                  </div>
-                </>
-                )
-
-                )
-              }
-                              <>
-                <Form>
-                {/* <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                    <div>
+                      <a href={`/user/${comment.commenter}`}>
+                        {comment.commenter}
+                      </a>
+                      <p>{comment.comment}</p>
+                    </div>
+                  </>
+                ))}
+              <>
+                <CommentForm post={post} commenter={userProf} />
+                {/* <Form>
+                  <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                   <Form.Label>Email address</Form.Label>
                   <Form.Control type="email" placeholder="name@example.com" />
-                </Form.Group> */}
-                <Form.Group className="mb-3 text-center" controlId="exampleForm.ControlTextarea1">
-                  <Form.Label>LEAVE A COMMENT</Form.Label>
-                  <Form.Control as="textarea" className= "w-50"rows={2} />
                 </Form.Group>
-                <Button key={post._id} variant="primary" >{post._id}</Button>
-              </Form>
+                  <Form.Group
+                    className="mb-3 text-center"
+                    controlId="exampleForm.ControlTextarea1"
+                  >
+                    <Form.Label>LEAVE A COMMENT</Form.Label>
+                    <Form.Control as="textarea" className="w-50" rows={2} />
+                  </Form.Group>
+                  <Button key={post._id} variant="primary">
+                    {post._id}
+                  </Button>
+                </Form> */}
               </>
-
-
             </div>
           ))}
       </div>

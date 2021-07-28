@@ -48,7 +48,7 @@ const COMMENT_POST = gql`
     $comment: String
   ) {
     commentPost(
-      postId: $id
+      postId: $postId
       commenter: $commenter
       postDate: $postDate
       comment: $comment

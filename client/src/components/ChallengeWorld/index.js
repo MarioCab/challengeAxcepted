@@ -26,9 +26,13 @@ const ChallengeWorld = () => {
     userId: userId,
     username: poster,
   });
-  const [addPost, { error, 
-    // data 
-  }] = useMutation(ADD_POST);
+  const [
+    addPost,
+    {
+      error,
+      // data
+    },
+  ] = useMutation(ADD_POST);
   if (error) {
     console.log(error);
   }
@@ -47,9 +51,9 @@ const ChallengeWorld = () => {
   let history = useHistory();
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);    
+    console.log(formState);
     history.push("/");
-    
+
     try {
       const { data } = await addPost({
         variables: { ...formState },
