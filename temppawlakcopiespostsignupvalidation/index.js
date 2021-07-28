@@ -29,15 +29,6 @@ const PostList = ({ posts }) => {
               <div className="card-body bg-light p-2">
                 <a href={loadUser(post)}>{post.username}</a>
               </div>
-              {posts.comments && 
-                posts.comments.map((comment) =>(
-                  <div>
-                    <p>{posts.comment}</p>
-                  </div>
-                )
-                )
-              }
-
             </div>
           ))}
       </div>
