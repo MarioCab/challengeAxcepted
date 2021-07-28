@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 // import { Form, Row, Col, Button } from "react-bootstrap";
-import { Form, Button, Col } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 import { COMMENT_POST } from "../../utils/mutations";
 // import { useMutation, useQuery } from "@apollo/client";
 import { useMutation } from "@apollo/client";
 // import { QUERY_ME } from "../../utils/queries";
 // import { Router } from "react-router-dom";
-import { useHistory } from "react-router";
-import AuthService from "../../utils/auth";
+// import { useHistory } from "react-router";
+// import AuthService from "../../utils/auth";
 
 const CommentForm = ({ post, commenter }) => {
   console.log(post);
@@ -59,23 +59,28 @@ const CommentForm = ({ post, commenter }) => {
   };
   return (
     <div>
-      <Form onSubmit={handleFormSubmit}>
+      <Form onSubmit={handleFormSubmit} className="text-center">
         <Form.Group
-          className="mb-3 text-center"
+          className="mb-3 text-center col-12"
           controlId="exampleForm.ControlTextarea1"
         >
-          <Form.Label>LEAVE A COMMENT</Form.Label>
+          <Form.Label className="col-2">LEAVE A COMMENT</Form.Label>
           <input
-            className="form-input"
+            className="form-input col-4"
             name="comment"
             type="text"
             value={formState.comment}
             onChange={handleChange}
           />
-        </Form.Group>
-        <Button key={post._id} variant="primary" type=" submit">
+          <span className="col-4">    </span>
+        <Button key={post._id} variant="primary" type=" submit" className="col-2">
           Submit Comment
         </Button>
+
+        </Form.Group>
+        {/* <Button key={post._id} variant="primary" type=" submit">
+          Submit Comment
+        </Button> */}
       </Form>
     </div>
   );

@@ -1,7 +1,7 @@
 import React from "react";
-import { useHistory } from "react-router";
-import { useMutation } from "@apollo/client";
-import { Form, Button, Alert } from "react-bootstrap";
+// import { useHistory } from "react-router";
+// import { useMutation } from "@apollo/client";
+// import { Form, Button, Alert } from "react-bootstrap";
 import CommentForm from "../CommentForm";
 import AuthService from "../../utils/auth";
 import Auth from "../../utils/auth";
@@ -17,7 +17,7 @@ const PostList = ({ posts }) => {
   // const user = userProf.username;
   // console.log(userProf);
   // console.log(username);
-  let history = useHistory();
+  // let history = useHistory();
   // const loadUser = () => {
   //   history.push("/user/" + `${post.username}`);
   // };
@@ -26,12 +26,14 @@ const PostList = ({ posts }) => {
   } else {
     // let history = useHistory();
     const loadUser = (post) => {
-      return "/user/" + `${post.username}`;
+      return `/user/${post.username}`;
 
       // const loadCommenter = (comment) => {
       //   return "/user/" + `${comment.commenter}`
       // }
     };
+    // let comm;
+    // let c;
     return (
       <div>
         <h3> Hello </h3>
@@ -48,8 +50,12 @@ const PostList = ({ posts }) => {
               <div className="card-body bg-light p-2">
                 <a href={loadUser(post)}>{post.username}</a>
               </div>
+              <>
+              {Auth.loggedIn() && (
+                <CommentForm post={post} commenter={userProf} />)}
+              </>
               {post.comments &&
-                post.comments.map((comment) => (
+                [...post.comments].reverse().map((comment) => (
                   <>
                     <div>
                       <a href={`/user/${comment.commenter}`}>
@@ -59,26 +65,10 @@ const PostList = ({ posts }) => {
                     </div>
                   </>
                 ))}
-              <>
+              {/* <>
               {Auth.loggedIn() && (
                 <CommentForm post={post} commenter={userProf} />)}
-                {/* <Form>
-                  <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                  <Form.Label>Email address</Form.Label>
-                  <Form.Control type="email" placeholder="name@example.com" />
-                </Form.Group>
-                  <Form.Group
-                    className="mb-3 text-center"
-                    controlId="exampleForm.ControlTextarea1"
-                  >
-                    <Form.Label>LEAVE A COMMENT</Form.Label>
-                    <Form.Control as="textarea" className="w-50" rows={2} />
-                  </Form.Group>
-                  <Button key={post._id} variant="primary">
-                    {post._id}
-                  </Button>
-                </Form> */}
-              </>
+              </> */}
             </div>
           ))}
       </div>

@@ -1,5 +1,7 @@
 import React from "react";
-import { Redirect, useParams } from "react-router-dom";
+import { 
+  // Redirect, 
+  useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
 import PostList from "../components/PostList";
@@ -10,7 +12,7 @@ import { QUERY_ME, QUERY_USER } from "../utils/queries";
 
 // import Hero from "../components/Hero";
 
-import Auth from "../utils/auth";
+// import Auth from "../utils/auth";
 
 const Mychallenges = () => {
   
