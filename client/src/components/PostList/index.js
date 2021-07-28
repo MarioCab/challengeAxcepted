@@ -1,8 +1,13 @@
 import React from "react";
 import { useHistory } from "react-router";
+import {useMutation} from "@apollo/client";
 import { Form, Button, Alert } from "react-bootstrap";
+import AuthService from "../../utils/auth";
+import COMMENT_POST from "../../utils/mutations"
 
 const PostList = ({ posts }) => {
+  const commenter = AuthService.getProfile().data.username;
+  console.log(commenter);
   let history = useHistory();
   // const loadUser = () => {
   //   history.push("/user/" + `${post.username}`);
@@ -56,6 +61,7 @@ const PostList = ({ posts }) => {
                   <Form.Label>LEAVE A COMMENT</Form.Label>
                   <Form.Control as="textarea" className= "w-50"rows={2} />
                 </Form.Group>
+                <Button key={post._id} variant="primary" >{post._id}</Button>
               </Form>
               </>
 

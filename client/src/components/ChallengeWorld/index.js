@@ -10,11 +10,11 @@ import { useHistory } from "react-router";
 import AuthService from "../../utils/auth";
 
 const ChallengeWorld = () => {
-  const userPorf = AuthService.getProfile();
-  const userId = userPorf.data._id;
-  const poster = userPorf.data.username;
+  const userProf = AuthService.getProfile();
+  const userId = userProf.data._id;
+  const poster = userProf.data.username;
 
-  console.log(userPorf);
+  console.log(userProf);
 
   // const { loading, me } = useQuery(QUERY_ME);
   // console.log(me);
