@@ -8,7 +8,7 @@ const resolvers = {
       return Post.find({}).populate("comments");
     },
     getPost: async (parent, { id }) => {
-      return Post.findOne({ _id: id });
+      return Post.findOne({ _id: id }).populate("comments");
     },
     users: async () => {
       return User.find({}).populate("posts").populate({

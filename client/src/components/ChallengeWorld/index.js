@@ -10,11 +10,11 @@ import { useHistory } from "react-router";
 import AuthService from "../../utils/auth";
 
 const ChallengeWorld = () => {
-  const userPorf = AuthService.getProfile();
-  const userId = userPorf.data._id;
-  const poster = userPorf.data.username;
+  const userProf = AuthService.getProfile();
+  const userId = userProf.data._id;
+  const poster = userProf.data.username;
 
-  console.log(userPorf);
+  console.log(userProf);
 
   // const { loading, me } = useQuery(QUERY_ME);
   // console.log(me);
@@ -26,9 +26,13 @@ const ChallengeWorld = () => {
     userId: userId,
     username: poster,
   });
-  const [addPost, { error, 
-    // data 
-  }] = useMutation(ADD_POST);
+  const [
+    addPost,
+    {
+      error,
+      // data
+    },
+  ] = useMutation(ADD_POST);
   if (error) {
     console.log(error);
   }
@@ -47,9 +51,9 @@ const ChallengeWorld = () => {
   let history = useHistory();
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);    
+    console.log(formState);
     history.push("/");
-    
+
     try {
       const { data } = await addPost({
         variables: { ...formState },

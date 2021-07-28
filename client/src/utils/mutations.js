@@ -42,13 +42,13 @@ const LOGIN_USER = gql`
 
 const COMMENT_POST = gql`
   mutation newComment(
-    $id: ID
+    $postId: ID
     $commenter: String
     $postDate: String
     $comment: String
   ) {
     commentPost(
-      postId: $id
+      postId: $postId
       commenter: $commenter
       postDate: $postDate
       comment: $comment
