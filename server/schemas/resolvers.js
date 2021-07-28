@@ -5,16 +5,25 @@ const { signToken } = require("../utils/auth");
 const resolvers = {
   Query: {
     posts: async () => {
-      return Post.find({}).populate("issuer").populate("comments");
+      return Post.find({}).populate("comments");
     },
     getPost: async (parent, { id }) => {
       return Post.findOne({ _id: id });
     },
     users: async () => {
-      return User.find({}).populate("posts");
+      return User.find({}).populate("posts").populate({
+        path: "posts",
+        populate: "comments",
+      });
     },
     getUser: async (parent, { username }) => {
-      return User.findOne({ username }).populate("posts");
+      return User.findOne({ username }).populate("posts").populate({
+        path: "posts",
+        populate: "comments",
+      });
+    },
+    comments: async () => {
+      return Comment.find({});
     },
     me: async (parent, args, context) => {
       if (context.user) {
@@ -89,18 +98,22 @@ const resolvers = {
         }
       );
     },
-    commentPost: async (parent, {postId, commenter, postDate, comment}) => {
-      const commentPosted = await Comment.create({postId, commenter, postDate, comment})
-      const post = await Post.findOneAndUpdate({
-        _id: postId,
-      },
-      {$addToSet:
-        {comments: commentPosted}        
-      },
-      {new: true}
-      )
-      return(post)
-    }
-  }
+    commentPost: async (parent, { postId, commenter, postDate, comment }) => {
+      const commentPosted = await Comment.create({
+        postId,
+        commenter,
+        postDate,
+        comment,
+      });
+
+      await Post.findOneAndUpdate(
+        {
+          _id: postId,
+        },
+        { $addToSet: { comments: commentPosted._id } }
+      );
+      return commentPosted;
+    },
+  },
 };
 module.exports = resolvers;
