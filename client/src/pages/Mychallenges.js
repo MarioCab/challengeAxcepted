@@ -1,7 +1,8 @@
 import React from "react";
-import { 
-  // Redirect, 
-  useParams } from "react-router-dom";
+import {
+  // Redirect,
+  useParams,
+} from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
 import PostList from "../components/PostList";
@@ -15,7 +16,6 @@ import { QUERY_ME, QUERY_USER } from "../utils/queries";
 // import Auth from "../utils/auth";
 
 const Mychallenges = () => {
-  
   const { username: userParam } = useParams();
 
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
@@ -26,9 +26,8 @@ const Mychallenges = () => {
 
   const user = data?.me || data?.getUser || {};
   console.log(user);
-  const posts = user.posts || [];                    //
-  let p = [...posts].reverse()
-
+  const posts = user.posts || []; //
+  let p = [...posts].reverse();
 
   // if (data?.me === data?.getUser){
   //   return <Redirect to="/me" />
@@ -53,14 +52,12 @@ const Mychallenges = () => {
     );
   }
   return (
-    <main>
-          {/* {console.dir(4)} */}
+    <main id="wholePost">
+      {/* {console.dir(4)} */}
 
       {/* <Hero/>   */}
       {/* <Carousel/>  */}
-      <div className="col-12 col-md-8 mb-3">
-        {loading ? <div>Loading...</div> : <PostList posts={p} />}
-      </div>
+      <div>{loading ? <div>Loading...</div> : <PostList posts={p} />}</div>
     </main>
   );
 };

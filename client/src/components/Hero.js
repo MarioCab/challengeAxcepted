@@ -10,7 +10,7 @@ import AuthService from "../utils/auth";
 import { useHistory } from "react-router";
 import LoginForm from "./LoginForm";
 import decode from "jwt-decode";
-
+import Axe from "./axe";
 
 const Hero = () => {
   let history = useHistory();
@@ -46,6 +46,7 @@ const Hero = () => {
                 Issue and axcept challenges in your community and around the
                 world!
               </p>
+              <Axe />
               <p className="lead">
                 <Button onClick={handleRedirect} color="primary">
                   Get Started

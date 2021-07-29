@@ -6,12 +6,10 @@ import CommentForm from "../CommentForm";
 import AuthService from "../../utils/auth";
 import Auth from "../../utils/auth";
 
-
 const PostList = ({ posts }) => {
   let userProf;
   if (Auth.loggedIn()) {
-     userProf = AuthService.getProfile().data.username;
-
+    userProf = AuthService.getProfile().data.username;
   }
 
   // const user = userProf.username;
@@ -35,35 +33,42 @@ const PostList = ({ posts }) => {
     // let comm;
     // let c;
     return (
-      <div>
-        <h3> Hello </h3>
+      <div id="wholePost">
+        <br />
+        <h3> CHALLENGES AWAITING!! </h3>
+        <br />
         {posts &&
           posts.map((post) => (
-            <div key={post._id} className="card mb-3">
-              <h4 className="card-header bg-primary text-light p-2 m-0">
+            <div key={post._id} className="card mb-3 mainPostCard">
+              <h4 className="card-header p-2 m-0">
                 {post.title} <br />
-                <span style={{ fontSize: "1rem" }}>{post.body} </span><hr></hr>
+                <span style={{ fontSize: "1rem" }}>{post.body} </span>
+                <hr></hr>
                 <span style={{ fontSize: "1rem" }}>{post.location} </span>
-
               </h4>
-              <div className="card-body bg-light p-2">
+              <div className="card-body p-2">
                 <p>{post.challenge}</p>
               </div>
-              <div className="card-body bg-light p-2">
+              <div className="card-body p-2">
                 <a href={loadUser(post)}>{post.username}</a>
               </div>
               <>
-              {Auth.loggedIn() && (
-                <CommentForm post={post} commenter={userProf} />)}
+                {Auth.loggedIn() && (
+                  <CommentForm post={post} commenter={userProf} />
+                )}
               </>
               {post.comments &&
                 [...post.comments].reverse().map((comment) => (
                   <>
                     <div>
-                      <a href={`/user/${comment.commenter}`}>
-                        {comment.commenter}
-                      </a>
-                      <p className= "text-dark">{comment.comment}</p>      {/* REMOVE TEXT DARK CLASS FOR FINAL STYLING  */}
+                      <h3 id="commentHead">Comments:</h3>
+                      <div id="comments">
+                        <a href={`/user/${comment.commenter}`}>
+                          {comment.commenter}
+                        </a>
+                        <p className="text-dark">{comment.comment}</p>{" "}
+                        {/* REMOVE TEXT DARK CLASS FOR FINAL STYLING  */}
+                      </div>
                     </div>
                   </>
                 ))}

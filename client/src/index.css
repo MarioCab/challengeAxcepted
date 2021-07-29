@@ -12,7 +12,8 @@ code {
     monospace;
 }
 
-#mainContainer {
+#mainContainer,
+#body {
   background-color: rgb(49, 49, 49);
 }
 
@@ -45,4 +46,31 @@ code {
 .makePostForm {
   text-align: center;
   justify-content: center;
+}
+
+.card-header,
+.card-body {
+  color: black;
+}
+
+.mainPostCard {
+  text-align: center;
+  justify-content: center;
+}
+
+#commentHead {
+  color: black;
+  border-bottom: thin black;
+}
+
+#comments {
+  border-top: thin black;
+  border-bottom: thin black;
+}
+
+#wholePost {
+  align-content: center;
+  text-align: center;
+  justify-content: center;
+  padding: 2%;
 }

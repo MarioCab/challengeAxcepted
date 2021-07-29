@@ -124,7 +124,6 @@ function App() {
             </Navbar.Collapse>
           </Navbar>
           {/* <Header /> */}
-          <Axe />
           <Switch>
             <Route exact path="/login">
               <Login />
