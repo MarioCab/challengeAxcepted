@@ -1,4 +1,4 @@
-/* body {
+body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -10,21 +10,17 @@
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
-} */
-
-* {
-  color: whitesmoke;
 }
 
 #mainContainer {
   background-color: rgb(49, 49, 49);
 }
 
-.bigFont {
-  font-family: "Staatliches", cursive;
+#navbarWhole {
   color: whitesmoke;
 }
 
-Header {
-  justify-content: right;
+.bigFont {
+  font-family: "Staatliches", cursive;
+  color: whitesmoke;
 }

@@ -14,7 +14,7 @@ import Home from "./pages/Home";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-
+import AxeDispaly from "./components/axe";
 import Login from "./pages/Login";
 import LoginLink from "./components/LoginLink";
 
@@ -23,6 +23,9 @@ import Auth from "./utils/auth";
 // import Header from "./components/Header";
 import Mychallenges from "./pages/Mychallenges";
 import ChallengeWorld from "./components/ChallengeWorld";
+import { Scene } from "three";
+import Axe from "./components/axe";
+import Cat from "./components/axe";
 
 // const client = new ApolloClient({
 // =======
@@ -121,6 +124,7 @@ function App() {
             </Navbar.Collapse>
           </Navbar>
           {/* <Header /> */}
+          <Axe />
           <Switch>
             <Route exact path="/login">
               <Login />

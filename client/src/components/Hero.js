@@ -11,6 +11,7 @@ import { useHistory } from "react-router";
 import LoginForm from "./LoginForm";
 import decode from "jwt-decode";
 
+
 const Hero = () => {
   let history = useHistory();
 

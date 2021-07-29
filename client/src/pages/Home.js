@@ -1,9 +1,6 @@
 import React from "react";
-
 import { useQuery } from "@apollo/client";
-
 import PostList from "../components/PostList";
-
 import { QUERY_POSTS } from "../utils/queries";
 
 import Carousel from "../components/Carousel";
