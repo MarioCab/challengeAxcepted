@@ -63,7 +63,7 @@ const PostList = ({ posts }) => {
                       <a href={`/user/${comment.commenter}`}>
                         {comment.commenter}
                       </a>
-                      <p>{comment.comment}</p>
+                      <p className= "text-dark">{comment.comment}</p>      {/* REMOVE TEXT DARK CLASS FOR FINAL STYLING  */}
                     </div>
                   </>
                 ))}

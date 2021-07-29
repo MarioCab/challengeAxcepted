@@ -64,7 +64,7 @@ const CommentForm = ({ post, commenter }) => {
           className="mb-3 text-center col-12"
           controlId="exampleForm.ControlTextarea1"
         >
-          <Form.Label className="col-2">LEAVE A COMMENT</Form.Label>
+          <Form.Label className="col-2 text-dark">LEAVE A COMMENT</Form.Label>  {/* REMOVE TEXT DARK CLASS FOR FINAL STYLING  */}
           <input
             className="form-input col-4"
             name="comment"
