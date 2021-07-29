@@ -46,7 +46,7 @@ const Mychallenges = () => {
     // console.dir(3)
     return (
       <h1>
-        Log in to see your challenges!!! You can use the links above to sing in
+        Log in to see your challenges!!! You can use the links above to sign in
         or sign up!
       </h1>
     );
