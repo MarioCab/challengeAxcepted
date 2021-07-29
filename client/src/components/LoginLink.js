@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import { Link } from "react-router-dom";
 import { Nav, Modal, Tab, Button } from "react-bootstrap";
 import Auth from "../utils/auth";
 
@@ -12,33 +11,24 @@ const LoginLink = () => {
     Auth.logout();
   };
 
-  const [showModal, setShowModal] =
-    // true;
-    useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <div>
       {Auth.loggedIn() ? (
         <>
-          <span className="text-success">
-            {Auth.getProfile().data.username} LOGGED IN
-          </span>
-          <Button
-            variant="danger"
-            // className="btn btn-small btn-primary m-2"
-            onClick={logout}
-          >
+          <Button variant="danger" onClick={logout}>
             Logout
           </Button>
+          <span> </span>
+          <span className="text-success">
+            Welcome Back {Auth.getProfile().data.username}!! - Post or find a
+            new Challenge.
+          </span>
         </>
       ) : (
         <>
-          {/* <h1>LOGIN</h1> */}
-          <Button
-            id="login/signup"
-            variant="primary"
-            onClick={() => setShowModal(true)}
-          >
+          <Button variant="primary" onClick={() => setShowModal(true)}>
             Login/Sign Up
           </Button>
           <Modal
@@ -74,22 +64,9 @@ const LoginLink = () => {
             </Tab.Container>
           </Modal>
         </>
-
-        // <>
-        //   <Link className="btn btn-lg btn-info m-2" to="/login">
-        //     Login
-        //   </Link>
-        //   <Link className="btn btn-lg btn-light m-2" to="/signup">
-        //     Signup
-        //   </Link>
-        // </>
       )}
     </div>
   );
-
-  // return(
-  //     <h1>Hello login</h1>
-  // )
 };
 
 export default LoginLink;
