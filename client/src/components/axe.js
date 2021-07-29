@@ -32,6 +32,7 @@ export default function Axe() {
         />
       </Suspense>
       <OrbitControls
+        enableZoom={false}
         enablePan={false}
         enableDamping
         dampingFactor={0.5}
