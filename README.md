@@ -3,7 +3,7 @@
   ##  Description
 
 ***
-  If you thrive on challenges and hate to be outdone, you may want to find some "friendly competition."  ChallengeAXcepted is a web application that you can use to issue and answer any sort of challenge. Whether you want a friendly game of chess, a drinking competition, or want to challenge all comers to an axe throwing competition, ChallengeAXcepted is you one stop shop. This app uses a React front end with a nodejs server, a MongoDB database, and a GraphQL API along with the below listed depenencies.
+  If you thrive on challenges and hate to be outdone, you may want to find some "friendly competition."  ChallengeAXcepted is a web application that you can use to issue and answer any sort of challenge. Whether you want a friendly game of chess, a drinking competition, or want to challenge all comers to an axe throwing competition, ChallengeAXcepted is your one stop shop. This app uses a React front end with a nodejs server, a MongoDB database, and a GraphQL API along with the below listed depenencies.
 
 ![challengeAXcepted](./challengeaxcepted.gif)
   
