@@ -75,32 +75,45 @@ const client = new ApolloClient({
 function App() {
   let loggedInUser;
   if (Auth.loggedIn()) {
-  loggedInUser = `/user/${Auth.getProfile().data.username}`
+    loggedInUser = `/user/${Auth.getProfile().data.username}`;
   }
   return (
     <ApolloProvider client={client}>
       <Router>
-        <Container className="p-0" fluid={true}>
-          <Navbar className="border-bottom" bg="transparent" expand="lg">
-            <Navbar.Brand>Challenge Axcepted</Navbar.Brand>
+        <Container className="p-0 bigFont" id="mainContainer" fluid={true}>
+          <Navbar
+            className="border-bottom bigFont"
+            bg="transparent"
+            expand="lg"
+            id="navbarWhole"
+          >
+            <Navbar.Brand
+              className="d-flex justify-content-end"
+              id="navbarTitle"
+            >
+              Challenge Axcepted
+            </Navbar.Brand>
             <Navbar.Toggle className="border-0" aria-controls="navbar-toggle" />
             <Navbar.Collapse id="navbar-toggle">
               <Nav className="ml-auto">
-                <Link className="nav-link" to="/">
+                <Link className="nav-link" id="home" to="/">
                   Home
                 </Link>
                 {/* <LoginLink /> */}
                 {/* <Link className="nav-link" to="/login">Login</Link> */}
                 <>
-                {Auth.loggedIn() ? (
-                  <>
-                <Link className="nav-link" to="/challengeworld">
-                  Challenge World
-                </Link>
-                <Link className="nav-link" to= {loggedInUser}>
-                  My Challenges
-                </Link>
-                </>):(<></>)}
+                  {Auth.loggedIn() ? (
+                    <>
+                      <Link className="nav-link" to="/challengeworld">
+                        Challenge World
+                      </Link>
+                      <Link className="nav-link" to={loggedInUser}>
+                        My Challenges
+                      </Link>
+                    </>
+                  ) : (
+                    <></>
+                  )}
                 </>
                 <LoginLink />
                 {/* <Header /> */}

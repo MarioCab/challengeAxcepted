@@ -11,7 +11,7 @@ const Header = () => {
     
 return(
     // <h1>Hello Header</h1>
-    <div>
+    <div id="navbarHead">
     {Auth.loggedIn() ? (
       <>
         <span className="text-danger">{Auth.getProfile().data.username} LOGGED IN</span>
