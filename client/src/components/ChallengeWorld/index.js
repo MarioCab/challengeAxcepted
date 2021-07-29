@@ -63,13 +63,17 @@ const ChallengeWorld = () => {
   };
   return (
     <div>
-      <Form onSubmit={handleFormSubmit}>
+      <Form className="makePostForm" onSubmit={handleFormSubmit}>
         <Col md={{ span: 6, offset: 3 }}>
           <Form.Group>
             <Col>
-              <Form.Label>What is your challenge?</Form.Label>
+              <Form.Label className="formLabel">
+                What is your challenge?
+              </Form.Label>
+              <br />
               <input
                 className="form-input"
+                id="makeChallengeTitleInput"
                 placeholder="Enter challenge title here"
                 name="title"
                 type="text"
@@ -78,9 +82,13 @@ const ChallengeWorld = () => {
               />
             </Col>
             <Col>
-              <Form.Label>What are the details of your challenge?</Form.Label>
-              <input
+              <Form.Label className="formLabel">
+                What are the details of your challenge?
+              </Form.Label>
+              <br />
+              <textarea
                 className="form-input"
+                id="makeChallengeBodyInput"
                 placeholder="What do potential accepters need to know about this challenge?"
                 name="body"
                 type="text"
@@ -89,9 +97,13 @@ const ChallengeWorld = () => {
               />
             </Col>
             <Col>
-              <Form.Label>Where is this challenge taking place?</Form.Label>
+              <Form.Label className="formLabel">
+                Where is this challenge taking place?
+              </Form.Label>
+              <br />
               <input
                 className="form-input"
+                id="makeChallengeLocationInput"
                 placeholder="Please enter location of challenge"
                 name="location"
                 type="text"
@@ -100,6 +112,7 @@ const ChallengeWorld = () => {
               />
             </Col>
           </Form.Group>
+          <br />
           <button
             className="btn btn-block btn-info"
             style={{ cursor: "pointer" }}

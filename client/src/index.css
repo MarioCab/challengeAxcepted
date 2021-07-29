@@ -24,3 +24,25 @@ code {
   font-family: "Staatliches", cursive;
   color: whitesmoke;
 }
+
+#makeChallengeBodyInput {
+  width: 1000px;
+  height: 100px;
+  flex-wrap: wrap;
+}
+
+#makeChallengeTitleInput,
+#makeChallengeLocationInput {
+  width: 1000px;
+  height: 50px;
+  flex-wrap: wrap;
+}
+
+.formLabel {
+  font-size: 35px;
+}
+
+.makePostForm {
+  text-align: center;
+  justify-content: center;
+}
