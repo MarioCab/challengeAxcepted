@@ -36,6 +36,7 @@ export default function Axe() {
         enablePan={false}
         enableDamping
         dampingFactor={0.5}
+        autoRotate={true}
         autoRotateSpeed={1}
         maxPolarAngle={Math.PI / 2}
         minPolarAngle={Math.PI / 2}
