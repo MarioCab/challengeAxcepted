@@ -82,6 +82,6 @@
   * Printice Lawton       Github : [printicelawton](https://github.com/printicelawton)
   * Mario Cabrera         Github : [MarioCab](https://github.com/MarioCab)
   * Tom Kerekes           Github : [tkerekes10](https://github.com/tkerekes10)
-  * Matthew Scott Pawlak  Github : [pharaohnof](https://github.com/pharaohnof)
+  * Matthew Scott Pawlak  Github : [FaeroDev](https://github.com/FaeroDev)
 
   Project Live Page: https://challengeaxcepted.herokuapp.com/
