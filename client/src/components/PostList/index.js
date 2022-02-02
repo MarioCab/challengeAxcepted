@@ -56,12 +56,14 @@ const PostList = ({ posts }) => {
                 {Auth.loggedIn() && (
                   <CommentForm post={post} commenter={userProf} />
                 )}
+
               </>
+              {post.comments && <h3 id="commentHead">Comments:</h3>}
               {post.comments &&
                 [...post.comments].reverse().map((comment) => (
                   <>
                     <div>
-                      <h3 id="commentHead">Comments:</h3>
+                      {/* <h3 id="commentHead">Comments:</h3> */}
                       <div id="comments">
                         <a href={`/user/${comment.commenter}`}>
                           {comment.commenter}
