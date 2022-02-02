@@ -20,7 +20,7 @@
   "author": "Cabrera, Kerekes, Lawton, McDermott and Pawlak",
   "license": "ISC",
   "devDependencies": {
-    "concurrently": "^5.1.0"
+    "concurrently": "^7.0.0"
   },
   "bugs": {
     "url": "https://github.com/fmcdermott4/challengeAxcepted/issues"
@@ -30,7 +30,7 @@
     "@react-three/drei": "^7.2.2",
     "@react-three/fiber": "^7.0.6",
     "chokidar": "^3.5.2",
-    "drei": "^2.2.21",
+    "drei": "^1.0.0",
     "lerp": "^1.0.3",
     "react-spring": "^8.0.27",
     "react-timekeeper": "^2.1.3",
